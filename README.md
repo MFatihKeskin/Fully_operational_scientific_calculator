@@ -96,6 +96,7 @@ During this experiment, each pressed button was assigned to a variable. In this 
 
 #### ISSUES TASK3
 **PROBLEMS ENCOUNTERED
+
 I thought the error was caused by there because the number I assigned to print or process on the screen lost its value when going to another function, and because I first started writing code with TIM1. For example, a variable that takes the value 5 when assigning loses its number when assigning it to another temporary variable, and -214287.... It has a long digit value in its form. To prevent this, with the help of our teacher, this problem was eliminated by defining 
 “num = num & 0x7FFFFFFF;      or 	 num = num + pow(2, 31);”.
 
@@ -117,6 +118,7 @@ As seen above, each time we come to this function, we can get this output on the
 
 #### ISSUES TASK4
 **PROBLEMS ENCOUNTERED
+
 ** I working with TIM1 has been discontinued due to the problem I mentioned above. Because it was thought to be a problem caused by Tim1. But another error was encountered that did not exist when there was TIM1. If the “breakpoint” assignment cannot be made for the operation we want to do in this part, no output can be read on the SSD screen. The cause of this remains unsolved. For this reason, as can be seen from my videos, I must constantly continue my code with “resume”. I guess I shouldn't have stopped working with TIM1 or backed up that work. This problem has not been solved.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
