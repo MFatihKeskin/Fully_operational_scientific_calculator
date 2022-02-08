@@ -1,7 +1,7 @@
 /*
 * bsp.c
 *
-* author: MUHAMMET FATIH KESKIN - PROJE 2
+* author: MUHAMMET FATIH KESKIN 
 *
 */
 
@@ -127,8 +127,8 @@ void init_GPIO(void)
 	GPIOB->ODR |= (1U << 4); //PA5 D
 }
 
-void keypad_enable(void) //I'm not going to explain too much because it's processed in class.
-{						// I used same pin with processed in class
+void keypad_enable(void)
+{		
 
 	init_GPIO(); //the above variables are opened
 
@@ -369,7 +369,7 @@ void EXTI4_15_IRQHandler(void)
 	}
 }
 
-void D1_digit() //only D1 digit is active, only negative symbol
+void D1_digit() //only D1 digit is active, for negative symbol
 {
 	GPIOB->ODR |= (1U << 6);  // D1  digit to PB6
 	GPIOB->ODR &= ~(1U << 7); // D2  digit to PB7
@@ -445,7 +445,7 @@ void D4_digit_with_delay(uint32_t x)// I'll send the number D4 to the SSD
 	clearSSD();
 }
 
-void school_id(void) // my school_id = 1793
+void school_id(void) // my ıdle state = 1793
 {//if I didn't use such a loop and delay function,
  //all the digits would have the same value as the SSD connection
 	for (int i = 0; i < 6000; i++)
@@ -567,9 +567,7 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 		//it would increase these variables below and enter this function again.
 		//I bought a guard to prevent it (in if clause)
 
-			num = num & 0x7FFFFFFF; //I've used this variable a lot, and when I send it to a function,
-			//it's always -214789... "num" was defined in this way and the desired was achieved on the advice I received from Erdem teacher.
-			//I don't know what it means. But it works
+			num = num & 0x7FFFFFFF;
 
 			num_temp = num; //if the first number is received, save it by typing in num_temp.
 			//because I'll get this variable to take the second number. num-temp store a first number
@@ -585,7 +583,7 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 				D3_digit_with_delay(16);//o
 				D4_digit_with_delay(33);//g
 			}
-			num = num & 0x7FFFFFFF;// pls look at above comment
+			num = num & 0x7FFFFFFF;
 			sci_mode_log10 = 1;// if EA is 1,increase this variable as a counter and save the result until it is equal
 		}
 		if (trigonometric_calc == 1)//EEA func because trigonometric_calc = -1 for first state
@@ -597,7 +595,7 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 				D3_digit_with_delay(22);//i
 				D4_digit_with_delay(23);//n
 			}
-			num = num & 0x7FFFFFFF; // pls look at above comment
+			num = num & 0x7FFFFFFF;
 			trigonometric_calc_sin = 1; // if EEA is 1,increase this variable as a counter and save the result until it is equal
 		}
 
@@ -756,7 +754,7 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 		{
 			if (num != 0)
 			{
-				num = num & 0x7FFFFFFF; //pls look at above comment
+				num = num & 0x7FFFFFFF;
 			}
 			result = (num_temp + num);//add and print result
 			send_result_SSD(result);
@@ -826,7 +824,6 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 
 		if (sci_mode_log10 == 1) // log10 base calc
 		{
-			//num = num & 0x7FFFFFFF; // we dont need this now
 			trigonometric_result = log10(num); //
 			result = trigonometric_result * 1000;
 			dot_calc(result); //Send to SSD and make point calculation screen print
@@ -840,7 +837,6 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 		}
 		if (sci_mode_root == 1) //square_root calc
 		{
-			//num = num & 0x7FFFFFFF;
 			trigonometric_result = sqrt(num);
 			result = trigonometric_result * 1000;
 			if (num < 0)
@@ -861,34 +857,29 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 		}
 		if (sci_mode_square == 1) //pow func
 		{
-			//num = num & 0x7FFFFFFF;
 			result = pow(num, 2);
 			send_result_SSD(result); //not a decimal number
 		}
 		if (trigonometric_calc_sin == 1)//sinus calc
 		{
-			//num = num & 0x7FFFFFFF;
 			trigonometric_result = sin(num);
 			result = trigonometric_result * 1000;
 			dot_calc(result);//Send to SSD and make point calculation screen print
 		}
 		if (trigonometric_calc_cos == 1)//cosinus calc
 		{
-			//num = num & 0x7FFFFFFF;
 			trigonometric_result = cos(num);
 			result = trigonometric_result * 1000;
 			dot_calc(result);//Send to SSD and make point calculation screen print
 		}
 		if (trigonometric_calc_tan == 1)//tanjant calc
 		{
-			//num = num & 0x7FFFFFFF;
 			trigonometric_result = tan(num);
 			result = trigonometric_result * 1000;
 			dot_calc(result);//Send to SSD and make point calculation screen print
 		}
 		if (trigonometric_calc_cot == 1) // "math.h" not have a cot(num) we can use 1/tan
 		{
-			//num = num & 0x7FFFFFFF;
 			trigonometric_result = 1 / tan(num);
 			result = trigonometric_result * 1000;
 			dot_calc(result);//Send to SSD and make point calculation screen print
@@ -899,7 +890,6 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 	case 15:
 		if (trigonometric_calc == 1) //trigonometric calc, default value is -1
 		{
-			//num = num & 0x7FFFFFFF;
 			result = 3141; // pi=3.141
 			dot_calc(result);//Send to SSD and make point calculation screen print
 		}
@@ -1042,8 +1032,7 @@ void setSSD(int print) // we have to give 0 to light the LEDs
 	}
 }
 
-void send_result_SSD(uint32_t temp) //DIVIDE IT INTO DIGITS AND SEND IT
-									//TO THE FUNCTION ABOVE AND PRINT IT ON THE SCREEN
+void send_result_SSD(uint32_t temp) //DIVIDE IT INTO DIGITS AND SEND IT TO THE FUNCTION ABOVE AND PRINT IT ON THE SCREEN
 {
 	if (temp < 0)
 	{
