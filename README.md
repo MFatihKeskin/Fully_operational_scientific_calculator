@@ -116,10 +116,7 @@ As seen above, each time we come to this function, we can get this output on the
 
 ![image](https://user-images.githubusercontent.com/70964563/152975257-eb9542bd-6b1c-4994-b2d8-d5050a161c8b.png)
 
-#### ISSUES TASK4
-**PROBLEMS ENCOUNTERED
 
-** I working with TIM1 has been discontinued due to the problem I mentioned above. Because it was thought to be a problem caused by Tim1. But another error was encountered that did not exist when there was TIM1. If the “breakpoint” assignment cannot be made for the operation we want to do in this part, no output can be read on the SSD screen. The cause of this remains unsolved. For this reason, as can be seen from my videos, I must constantly continue my code with “resume”. I guess I shouldn't have stopped working with TIM1 or backed up that work. This problem has not been solved.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
